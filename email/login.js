@@ -85,7 +85,6 @@ app.listen(6677, () => {
     console.log("srever star 6677");
 });
 
-
 //htbml back button
 // let btn =document.querySelector("button");
 
