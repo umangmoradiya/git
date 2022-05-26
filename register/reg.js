@@ -9,7 +9,7 @@ const bodyparser = require("body-parser");
 app.use(bodyparser.urlencoded({ extended: false }));
 
 const mysql = require("mysql");
-const path = require("path");
+// const path = require("path");
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -34,8 +34,7 @@ app.post("/insert", (req, res) => {
     var phone =req.body.phone;
     var imageurl = req.body.imageurl;
     var lat_long = req.body.lat_long;
-    // var selectuser = [];
-    // var users = [];
+ 
 
     var matches = imageurl.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
 
@@ -77,12 +76,10 @@ app.post("/insert", (req, res) => {
             if (results.length > 0) {
                 //   res.send(results);
                 res.json({"msg":"login Successfully..."});
-                //   res.redirect("/welcome");
+           
                 
             } else {
-                // res.status(400).send({
-                //     'message': 'User is already registerd'
-                // })
+               
                 res.json({"msg":"not user..."});
             }
             res.end();
