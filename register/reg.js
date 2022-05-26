@@ -61,7 +61,7 @@ app.post("/insert", (req, res) => {
                 console.log(err);
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
-                res.send({ status: true, msg: "data insert..." });
+                res.send({ status: true,'message': 'Account Created Successfully.' });
                 //  res.json(data);
                 console.log("inserted....");
             }
