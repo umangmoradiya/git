@@ -114,7 +114,6 @@ const register = async (req, res) => {
     
 }
 
-
 });
 
 app.listen(5050,()=>{
