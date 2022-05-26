@@ -12,7 +12,6 @@ const db = mysql.createConnection({
     connectionLimit: 10,
 
 });
-
 db.connect((err) => {
     if (err) throw err;
     console.log("database connected successfully....");
