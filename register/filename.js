@@ -9,6 +9,6 @@ function makeid(length) {
    return result;
 }
 
-console.log(makeid(4));
+// console.log(makeid(4));
 
 module.exports = makeid;
