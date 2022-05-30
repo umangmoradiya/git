@@ -24,8 +24,16 @@ db.connect((err) => {
     console.log("database connected successfully....");
 });
 
+app.get("/home",(req, res) => {
+    res.sendFile(__dirname+"/home.html");
+});
+
+app.get("/ragister.html",(req, res) => {
+    res.sendFile(__dirname+"/ragister.html");
+});
+
 // insert
-app.post("/insert", (req, res) => {
+app.post("/ragister.html", (req, res) => {
     var name = req.body.name;
     var email = req.body.email;
     var password = req.body.password;
@@ -60,11 +68,17 @@ app.post("/insert", (req, res) => {
                 console.log(err);
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
-                res.send({ status: true,'message': 'Account Created Successfully.' });
+                // res.send({ status: true,'message': 'Account Created Successfully.' });
                 //  res.json(data);
                 console.log("inserted....");
+                res.redirect("/yes");
             }
         });
+
+        app.get("/yes",(req, res) => {
+            res.sendFile(__dirname+"/yes.html");
+        });
+        
 //delete 
 app.delete("/delete",(req,res)=>{
     var salon_id = req.body.salon_id;
@@ -85,8 +99,12 @@ app.delete("/delete",(req,res)=>{
 
 });
 
+app.get("/login.html",(req, res) => {
+    res.sendFile(__dirname+"/login.html");
+});
+
     // login
-    app.post("/insert/login", (req, res) => {
+    app.post("/login.html", (req, res) => {
         var password  = req.body.password;
         var email = req.body.email;
         var query = "email =" + email + "      "+ " password =" + password;
@@ -94,7 +112,10 @@ app.delete("/delete",(req,res)=>{
             console.log(query)
             if (results.length > 0) {
                 //   res.send(results);
-                res.json({"msg":"login Successfully..."});
+                // res.json({"msg":"login Successfully..."});
+                console.log("welcome....")
+                res.redirect("/welcome");
+            
            
                 
             } else {
@@ -104,9 +125,16 @@ app.delete("/delete",(req,res)=>{
             res.end();
         });
     });
+    app.get("/welcome",(req, res) => {
+        res.sendFile(__dirname+"/welcome.html");
+    });
 
+
+    app.get("/services.html",(req, res) => {
+        res.sendFile(__dirname+"/services.html");
+    });
     // services
-    app.post("/services", (req, res) => {
+    app.post("/services.html", (req, res) => {
     var services_name = req.body.services_name;
     var working = req.body.working;
     var imageurl = req.body.imageurl;
@@ -139,11 +167,17 @@ app.delete("/delete",(req,res)=>{
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
-                 res.json(data);
+                //  res.json(data);
                 console.log(" services inserted....");
+                res.redirect("/add");
             }
         });
     });
+
+    app.get("/add",(req, res) => {
+        res.sendFile(__dirname+"/add.html");
+    });
+
  
     //update services
 app.post("/services/update", (req, res) => {
@@ -204,8 +238,12 @@ app.post("/services/delete",(req,res)=>{
         });
     });
  
+    
+    app.get("/barber.html",(req, res) => {
+        res.sendFile(__dirname+"/barber.html");
+    });
     // barber
-   app.post("/barber", (req, res) => {
+   app.post("/barber.html", (req, res) => {
     var barber_name = req.body.barber_name;
     var barber_details = req.body.barber_details;
     var barber_image = req.body.barber_image;
@@ -236,12 +274,18 @@ app.post("/services/delete",(req,res)=>{
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
-                 res.json(data);
+                //  res.json(data);
                 console.log(" barber inserted....");
+                // document.write(data);
+                res.redirect("/add2");
             }
         });
     });
 
+    app.get("/add2",(req, res) => {
+        res.sendFile(__dirname+"/add2.html");
+    });
+  
     //update barber
 app.post("/barber/update", (req, res) => {
     var barber_name = req.body.barber_name;
@@ -303,28 +347,14 @@ app.post("/barber/delete",(req,res)=>{
    app.post("/order", (req, res) => {
     // var day = req.body.day;
     var date = req.body.date;
-    var time = req.body.time;
+    var slot = req.body.slot;
     var storeid = req.body.storeid;
+    var user_name = req.body.user_name;
+    var services_name = req.body.services_name;
  
-    // var matches = barber_image.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
-
-    // response = {};
-
-    // if (matches.length !== 3) {
-    //     return new Error('Invalid input string');
-    // }
-    // response.type = matches[1];
-    // response.data = new Buffer(matches[2], 'base64');
-    // let decodedImg = response;
-    // let imageBuffer = decodedImg.data;
-    // let type = decodedImg.type;
-    // let extension = mime.getExtension(type);
-    // let fileName = makeid(4) + '.' + extension;
-    // //   let fileName = 'img5' + '.' + extension;
-    // image = "http://localhost:7055" + "/images/" + fileName;
-   
-    db.query(`INSERT INTO order (date,time,storeid) VALUES(?,?,?)`,
-        [date,time,storeid], (err, data, fields) => {
+  
+    db.query(`INSERT INTO order(user_name,date,slot,services_name,storeid)VALUES(?,?,?,?,?)`,
+        [user_name,date,slot,services_name,storeid], (err, data, fields) => {
             
             if (err) {
                 res.send(err);
@@ -338,8 +368,6 @@ app.post("/barber/delete",(req,res)=>{
         });
     });
 
-
-    
     app.get('/images/:name', (req, res) => {
         var name = req.params.name;
                 

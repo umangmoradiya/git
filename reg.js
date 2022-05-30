@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const makeid = require("./filename");
+const makeid = require("./register/filename");
 
 const fs = require("fs");
 const mime = require("mime");
