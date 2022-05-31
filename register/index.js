@@ -352,9 +352,8 @@ app.post("/barber/delete",(req,res)=>{
     var user_name = req.body.user_name;
     var services_name = req.body.services_name;
  
-  
-    db.query(`INSERT INTO order(user_name,date,slot,services_name,storeid)VALUES(?,?,?,?,?)`,
-        [user_name,date,slot,services_name,storeid], (err, data, fields) => {
+    db.query(`INSERT INTO order( user_name, date, slot, services_name, storeid) VALUES (?,?,?,?,?,?)`,
+    [user_name,date,slot,services_name,storeid], (err, data, fields) => {
             
             if (err) {
                 res.send(err);
