@@ -16,7 +16,17 @@
 </head>
 <body style="background-color: rgb(10, 95, 81); font-size: 150%">
 
-    <h1 >barber....</h1><hr>
+    
+    <nav class="navbar bg-light" >
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="data:image/png;base64,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" alt="" width="40" height="60" class="d-inline-block align-text-top">
+              barber...<br>
+              </a>
+          </form>
+        </div>
+      </nav>
+
     <form method="post" action="/barber.html">
         <div class="mb-3 row" >
             
@@ -37,11 +47,6 @@
            <input type="number"  name="storeid" placeholder="storeid">
 
            <input type="submit"  class="waves-effect waves-light btn" value="submit">
-
-         
-   
-
-  
     
 </body>
 </html>

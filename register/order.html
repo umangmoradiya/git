@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    
+
+</head>
+<body style="background-color: rgb(10, 95, 81); font-size: 150%">
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAACCCAMAAAD48I8IAAAAZlBMVEX///8AAAA3Nzf19fUODg7v7++srKz5+fmKioq/v7+mpqZBQUHr6+soKChdXV2vr6+dnZ3i4uK1tbVUVFTNzc3a2toiIiJqamrHx8eBgYGTk5NISEjU1NRNTU0UFBRiYmJ4eHgwMDBZUM3BAAAEO0lEQVRoge2a69aqIBCGIzQPlWVpZZnZ/d/kNlOOM4hKq7W/1ftT8YlgZoBhFgsb7c5b0mhZXKyaj9OOcD1z1/QzkXRwSy+IIqcDlKl0cqIO8WsNT/bu6BudTm7u8CsATzbO8HsI7844/wc83YAS8UWWXT0BD34Ammz0OEF9JCTg+NaX8orjwQ9Oj0iFBwnMlvDFu23M8UiPyMOX8YDf6PguEKTDeHKU6AecPg1PViL+YYUPpb6Y8YmIX1rhSflqu9lyvId+tQ4g/C1c7WTFgmF6cZoeOnqLV9quwrsJX2kW9dYIt7pUOB5zxDFem3oYHg3ho4JCjOHTUXisdYrgPR4syr2oGLTbUGrD/4u/HcKDy8eADtZ4ujWTQFXW+HQCvXU/Ozy0cg/K++F/+A8bJl1N0cIWP08//A//w/9BvJ+q8nXOdHyoxUP7Q/j38Wmmyv4M/v2p/TC+PKiyP4N/f2o/jKe+qkDnTMfP0V/An8VHKj7Qxn5QMj5cmPBXzXIGlYt4KWFhY5gj8CcxRUtDAJ/Fo8VGx9/yEy8tCAHwc0R5cH0dtz3HeKa8zfYsP4Tv5i/5CJ7euik/A/ioCMdKXs5yZlE1gJ9g91KCJOLPIcO8Em+kJHws/OwVwM+TlP7Zu8bLySXXeCV15RivppogvL4Y2gbkiFjgJ0fMUnvuEg9kIyB8Ho3W62MK5KId2v1Zp4NeO01gNhUKaZN0Aedk7QjvI3PuCH9E8BsneDSG71zgdX/qdXOAD/BLmmbXMxtf4/RlNBuvX3Yzva525uJR+LFd4Wfi0aGJ3+/n4TGrOfXb2nl4xGoSxrPEBwWUGEEc6spb2OGjSjl1tEIS2mKZhw2ettFcv62CY00mNrHAd9eoZ/U5GIY9uReDeJ9dZZbKmwqgn5QpGsIL69ARfcO0Vj8349On+LF06UoB+l0DGPGK4S3Fd4C/JjrBgC81pxEOrcA1CEA34LWyIqnyR69ugOgo/gLZBfdHPQ4fNQSO96Ft0Uu9Vd/VF7wmSGKB+Fzndqq7/6Y+X7IsS3oXYXDvU6z3nW+plR9bBsjs8jk5UpnSTqC6la/Y2TOyThdd4OKUC9B5lhN5FeBZZ6N20Gqx1keeeXN7/LFPdlHA9pu9l2I2cd/cP43DN56rHwuWysgXrPGUVJ2+4MnFLYI7Yb3XQrmozLDLa+KEAHu7C4CvDfgFNZUIiYtTjeH59IDCj4viEtAdm8HynxqtQnkpRujC9iHvFwC4uoisj6qEGYErtNjaV9y5p0l4Q91YY3O8Jbgt6Ndtadm9iXjD9rzRtjTx+5yo7AjShgWPvW9dcX7vT8q6KG2jBpNnCfuvirc+u8fBE+nPWztiVsVsSp7fPkzKS4Nu4XRVJwYdkxTqSX+lcrmzlo96Ne+AzBNO2n7MiZh/Gb1wuvby0DjXVbSaD/FNAXw+v/4gvZlf6/vtf0uMTLLSyapnAAAAAElFTkSuQmCC" alt="" width="30" height="24" class="d-inline-block align-text-top">
+              order...
+              </a>
+          </form>
+        </div>
+      </nav>
+<hr>
+    <form method="post" action="/order.html">
+        <div class="mb-3 row" >
+            
+            <label  class="col-sm-2 col-form-label">user_name</label>
+            <div class="col-sm-2">
+            <input type="text" name="user_name" placeholder="user_name" >
+
+           <label  class="col-sm-2 col-form-label">date</label>
+           <div class="col-sm-2">
+           <input type="date" name="date" placeholder="date" >
+           
+           <label  class="col-sm-2 col-form-label">slot</label>
+           <div class="col-sm-2">
+           <input type="text" name="slot" placeholder="slot" >
+       
+           <label class="col-sm-2 col-form-label">user_id</label>
+           <div class="col-sm-10">
+           <input type="text"  name="user_id" placeholder="user_id">
+
+           <label  class="col-sm-2 col-form-label" >store_id</label>
+           <div class="col-sm-2">
+           <input type="text"  name="store_id" placeholder="store_id" >
+           </div>
+
+           <label  class="col-sm-2 col-form-label" >services_name</label>
+           <div class="col-sm-2">
+           <input type="text"  name="services_name" placeholder="services_name" >
+           </div>
+
+           <input type="submit"  class="waves-effect waves-light btn" value="submit">
+   
+           <!-- <button>back</button>
+   <script src="login.js"></script> -->
+    
+</body>
+</html>

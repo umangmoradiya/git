@@ -24,16 +24,16 @@ db.connect((err) => {
     console.log("database connected successfully....");
 });
 
-app.get("/home",(req, res) => {
-    res.sendFile(__dirname+"/home.html");
-});
+// app.get("/home",(req, res) => {
+//     res.sendFile(__dirname+"/home.html");
+// });
 
-app.get("/ragister.html",(req, res) => {
-    res.sendFile(__dirname+"/ragister.html");
-});
+// app.get("/ragister.html",(req, res) => {
+//     res.sendFile(__dirname+"/ragister.html");
+// });
 
 // insert
-app.post("/ragister.html", (req, res) => {
+app.post("/ragister", (req, res) => {
     var name = req.body.name;
     var email = req.body.email;
     var password = req.body.password;
@@ -71,13 +71,13 @@ app.post("/ragister.html", (req, res) => {
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
                 //  res.json(data);
                 console.log("inserted....");
-                res.redirect("/yes");
+                // res.redirect("/yes");
             }
         });
 
-        app.get("/yes",(req, res) => {
-            res.sendFile(__dirname+"/yes.html");
-        });
+        // app.get("/yes",(req, res) => {
+        //     res.sendFile(__dirname+"/yes.html");
+        // });
         
 //delete 
 app.delete("/delete",(req,res)=>{
@@ -99,12 +99,12 @@ app.delete("/delete",(req,res)=>{
 
 });
 
-app.get("/login.html",(req, res) => {
-    res.sendFile(__dirname+"/login.html");
-});
+// app.get("/login.html",(req, res) => {
+//     res.sendFile(__dirname+"/login.html");
+// });
 
     // login
-    app.post("/login.html", (req, res) => {
+    app.post("/login", (req, res) => {
         var password  = req.body.password;
         var email = req.body.email;
         var query = "email =" + email + "      "+ " password =" + password;
@@ -114,7 +114,7 @@ app.get("/login.html",(req, res) => {
                 //   res.send(results);
                 // res.json({"msg":"login Successfully..."});
                 console.log("welcome....")
-                res.redirect("/welcome");
+                // res.redirect("/welcome");
             
            
                 
@@ -125,16 +125,16 @@ app.get("/login.html",(req, res) => {
             res.end();
         });
     });
-    app.get("/welcome",(req, res) => {
-        res.sendFile(__dirname+"/welcome.html");
-    });
+    // app.get("/welcome",(req, res) => {
+    //     res.sendFile(__dirname+"/welcome.html");
+    // });
 
 
-    app.get("/services.html",(req, res) => {
-        res.sendFile(__dirname+"/services.html");
-    });
-    // services
-    app.post("/services.html", (req, res) => {
+    // app.get("/services.html",(req, res) => {
+    //     res.sendFile(__dirname+"/services.html");
+    // });
+    // // services
+    app.post("/services", (req, res) => {
     var services_name = req.body.services_name;
     var working = req.body.working;
     var imageurl = req.body.imageurl;
@@ -169,14 +169,14 @@ app.get("/login.html",(req, res) => {
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
                 //  res.json(data);
                 console.log(" services inserted....");
-                res.redirect("/add");
+                // res.redirect("/add");
             }
         });
     });
 
-    app.get("/add",(req, res) => {
-        res.sendFile(__dirname+"/add.html");
-    });
+    // app.get("/add",(req, res) => {
+    //     res.sendFile(__dirname+"/add.html");
+    // });
 
  
     //update services
@@ -239,11 +239,11 @@ app.post("/services/delete",(req,res)=>{
     });
  
     
-    app.get("/barber.html",(req, res) => {
-        res.sendFile(__dirname+"/barber.html");
-    });
+    // app.get("/barber.html",(req, res) => {
+    //     res.sendFile(__dirname+"/barber.html");
+    // });
     // barber
-   app.post("/barber.html", (req, res) => {
+   app.post("/barber", (req, res) => {
     var barber_name = req.body.barber_name;
     var barber_details = req.body.barber_details;
     var barber_image = req.body.barber_image;
@@ -277,14 +277,14 @@ app.post("/services/delete",(req,res)=>{
                 //  res.json(data);
                 console.log(" barber inserted....");
                 // document.write(data);
-                res.redirect("/add2");
+                // res.redirect("/add2");
             }
         });
     });
 
-    app.get("/add2",(req, res) => {
-        res.sendFile(__dirname+"/add2.html");
-    });
+    // app.get("/add2",(req, res) => {
+    //     res.sendFile(__dirname+"/add2.html");
+    // });
   
     //update barber
 app.post("/barber/update", (req, res) => {
