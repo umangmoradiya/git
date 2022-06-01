@@ -311,8 +311,8 @@ app.post("/barber/update", (req, res) => {
     //   let fileName = 'img5' + '.' + extension;
     image = "http://localhost:7055" + "/images/" + fileName;
    
-    db.query(`UPDATE barber SET barber_name=?,barber_details=?,barber_image=?,storeid=? where barber_id=?`,
-        [ barber_name,barber_details,image,storeid,barber_id], (err, data, fields) => {
+    db.query(`UPDATE barber SET barber_name=?,barber_details=?,barber_image=?,barber_id=? where storeid=?`,
+        [ barber_name,barber_details,image,barber_id,storeid], (err, data, fields) => {
             if (err) {
                 res.send(err);
                 console.log(err);
@@ -407,6 +407,82 @@ app.post("/barber/delete",(req,res)=>{
                     // res.send({ status: true,'message': 'Account Created Successfully.' });
                      res.json(data);
                     console.log(" status updated....");
+                }
+            });
+        }); 
+// image
+     app.post("/image", (req, res) => {
+    var image_name = req.body.image_name;
+    var imageurl = req.body.imageurl;
+   
+    var store_id = req.body.store_id;
+ 
+    var matches = imageurl.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
+
+    response = {};
+
+    if (matches.length !== 3) {
+        return new Error('Invalid input string');
+    }
+    response.type = matches[1];
+    response.data = new Buffer(matches[2], 'base64');
+    let decodedImg = response;
+    let imageBuffer = decodedImg.data;
+    let type = decodedImg.type;
+    let extension = mime.getExtension(type);
+    let fileName = makeid(4) + '.' + extension;
+    //   let fileName = 'img5' + '.' + extension;
+    image = "http://localhost:7055" + "/images/" + fileName;
+   
+    db.query(`INSERT INTO image(image_name,imageurl,store_id) VALUES(?,?,?)`,
+        [image_name,image,store_id], (err, data, fields) => {
+            if (err) {
+                res.send(err);
+                console.log(err);
+            } else {
+                fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
+                // res.send({ status: true,'message': 'Account Created Successfully.' });
+                 res.json(data);
+                console.log(" image inserted....");
+                // document.write(data);
+                // res.redirect("/add2");
+            }
+        });
+    });    
+// update image
+    app.post("/image/update", (req, res) => {
+        var image_name = req.body.image_name;
+    var imageurl = req.body.imageurl;
+   
+    var store_id = req.body.store_id;
+     
+        var matches = imageurl.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
+    
+        response = {};
+    
+        if (matches.length !== 3) {
+            return new Error('Invalid input string');
+        }
+        response.type = matches[1];
+        response.data = new Buffer(matches[2], 'base64');
+        let decodedImg = response;
+        let imageBuffer = decodedImg.data;
+        let type = decodedImg.type;
+        let extension = mime.getExtension(type);
+        let fileName = makeid(4) + '.' + extension;
+        //   let fileName = 'img5' + '.' + extension;
+        image = "http://localhost:7055" + "/images/" + fileName;
+       
+        db.query(`UPDATE image SET image_name=?,imageurl=? where store_id=?`,
+            [ image_name,image,store_id], (err, data, fields) => {
+                if (err) {
+                    res.send(err);
+                    console.log(err);
+                } else {
+                    fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
+                    // res.send({ status: true,'message': 'Account Created Successfully.' });
+                     res.json(data);
+                    console.log(" image updated....");
                 }
             });
         }); 
