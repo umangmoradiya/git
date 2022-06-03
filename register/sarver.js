@@ -97,7 +97,7 @@ app.post("/register/delete",(req,res)=>{
                 
                 res.send({
                     'message': 'register deleted Successfully...',
-                    "msg":data
+                  
 
                 });
                 //  res.json(data);
@@ -253,7 +253,7 @@ app.post("/services/delete",(req,res)=>{
             } else {
                 res.send({
                     'message': 'services deleted Successfully...',
-                    "msg":data
+                    
 
                 });
                
@@ -372,7 +372,7 @@ app.post("/barber/delete",(req,res)=>{
                 
                 res.send({
                     'message': 'barber delete Successfully...',
-                    "msg":data
+                   
 
                 });
                 //  res.json(data);
@@ -548,6 +548,26 @@ app.post("/barber/delete",(req,res)=>{
                 }
             });
         }); 
+
+// delete image 
+   app.post("/image/delete",(req,res)=>{
+    var image_id = req.body.image_id;
+       
+    db.query(`DELETE FROM image WHERE image_id = ?`,
+        [image_id], (err,data, fields) => {
+            if (err) {
+                // res.send(err);
+                console.log(err);
+            } else {
+                
+                res.send({
+                    'message': 'image delete Successfully...',
+                });
+                
+                console.log(" 'delete data.......");
+            }
+        });
+    });       
 //review
     app.post("/review", (req, res) => {
     var user_name = req.body.user_name;
