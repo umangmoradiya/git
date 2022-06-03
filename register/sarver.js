@@ -24,13 +24,7 @@ db.connect((err) => {
     console.log("database connected successfully....");
 });
 
-// app.get("/home",(req, res) => {
-//     res.sendFile(__dirname+"/home.html");
-// });
 
-// app.get("/ragister.html",(req, res) => {
-//     res.sendFile(__dirname+"/ragister.html");
-// });
 
 // insert
 app.post("/register", (req, res) => {
@@ -80,9 +74,6 @@ app.post("/register", (req, res) => {
         });
     });        
 
-        // app.get("/yes",(req, res) => {
-        //     res.sendFile(__dirname+"/yes.html");
-        // });
         
 //delete 
 app.post("/register/delete",(req,res)=>{ 
@@ -107,10 +98,6 @@ app.post("/register/delete",(req,res)=>{
     });     
 
 
-
-// app.get("/login.html",(req, res) => {
-//     res.sendFile(__dirname+"/login.html");
-// });
 
     // login
     app.post("/login", (req, res) => {
@@ -138,14 +125,7 @@ app.post("/register/delete",(req,res)=>{
             res.end();
         });
     });
-    // app.get("/welcome",(req, res) => {
-    //     res.sendFile(__dirname+"/welcome.html");
-    // });
 
-
-    // app.get("/services.html",(req, res) => {
-    //     res.sendFile(__dirname+"/services.html");
-    // });
     // // services
     app.post("/services", (req, res) => {
     var services_name = req.body.services_name;
@@ -191,9 +171,6 @@ app.post("/register/delete",(req,res)=>{
         });
     });
 
-    // app.get("/add",(req, res) => {
-    //     res.sendFile(__dirname+"/add.html");
-    // });
 
  
     //update services
@@ -264,9 +241,7 @@ app.post("/services/delete",(req,res)=>{
     });
  
     
-    // app.get("/barber.html",(req, res) => {
-    //     res.sendFile(__dirname+"/barber.html");
-    // });
+   
     // barber
    app.post("/barber", (req, res) => {
     var barber_name = req.body.barber_name;
@@ -310,9 +285,7 @@ app.post("/services/delete",(req,res)=>{
         });
     });
 
-    // app.get("/add2",(req, res) => {
-    //     res.sendFile(__dirname+"/add2.html");
-    // });
+
   
     //update barber
 app.post("/barber/update", (req, res) => {
@@ -382,9 +355,7 @@ app.post("/barber/delete",(req,res)=>{
     });
 
 
-    // app.get("/order.html",(req, res) => {
-    //     res.sendFile(__dirname+"/order.html");
-    // });
+
 // order
    app.post("/order", (req, res) => {
     // var day = req.body.day;
