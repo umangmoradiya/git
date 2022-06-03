@@ -33,7 +33,7 @@ db.connect((err) => {
 // });
 
 // insert
-app.post("/ragister", (req, res) => {
+app.post("/register", (req, res) => {
     var name = req.body.name;
     var email = req.body.email;
     var password = req.body.password;
@@ -43,7 +43,7 @@ app.post("/ragister", (req, res) => {
     var phone =req.body.phone;
     var imageurl = req.body.imageurl;
     var lat_long = req.body.lat_long;
-  
+ 
     var matches = imageurl.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
 
     response = {};
@@ -69,35 +69,44 @@ app.post("/ragister", (req, res) => {
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
-                //  res.json(data);
+                res.send({
+                    'message': 'register inserted Successfully...',
+                    "msg":data
+
+                });
                 console.log("inserted....");
                 // res.redirect("/yes");
             }
         });
+    });        
 
         // app.get("/yes",(req, res) => {
         //     res.sendFile(__dirname+"/yes.html");
         // });
         
 //delete 
-app.delete("/delete",(req,res)=>{
-    var salon_id = req.body.salon_id;
+app.post("/register/delete",(req,res)=>{ 
+    var store_id = req.body.store_id;
        
-    db.query(`DELETE FROM register WHERE salon_id = ?`,
-        [salon_id], (err,data, fields) => {
+    db.query(`DELETE FROM register WHERE store_id = ?`,
+        [store_id], (err,data, fields) => {
             if (err) {
                 // res.send(err);
                 console.log(err);
             } else {
                 
-                res.send(' delete data...' );
+                res.send({
+                    'message': 'register deleted Successfully...',
+                    "msg":data
+
+                });
                 //  res.json(data);
                 console.log(" 'delete data.......");
             }
         });
     });     
 
-});
+
 
 // app.get("/login.html",(req, res) => {
 //     res.sendFile(__dirname+"/login.html");
@@ -112,7 +121,11 @@ app.delete("/delete",(req,res)=>{
             console.log(query)
             if (results.length > 0) {
                 //   res.send(results);
-                // res.json({"msg":"login Successfully..."});
+                res.send({
+                    'message': 'login Successfully...',
+                    "msg":results
+
+                });
                 console.log("welcome....")
                 // res.redirect("/welcome");
             
@@ -167,7 +180,11 @@ app.delete("/delete",(req,res)=>{
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
-                //  res.json(data);
+                res.send({
+                    'message': 'services inserted Successfully...',
+                    "msg":data
+
+                });
                 console.log(" services inserted....");
                 // res.redirect("/add");
             }
@@ -214,7 +231,11 @@ app.post("/services/update", (req, res) => {
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
-                 res.json(data);
+                res.send({
+                    'message': 'services updated Successfully...',
+                    "msg":data
+
+                });
                 console.log(" services updated....");
             }
         });
@@ -222,16 +243,20 @@ app.post("/services/update", (req, res) => {
 
 // delete services
 app.post("/services/delete",(req,res)=>{
-    var salon_id = req.body.salon_id;
+    var services_id  = req.body.services_id ;
        
-    db.query(`DELETE FROM services WHERE salon_id = ?`,
-        [salon_id], (err,data, fields) => {
+    db.query(`DELETE FROM services WHERE services_id  = ?`,
+        [services_id ], (err,data, fields) => {
             if (err) {
                 // res.send(err);
                 console.log(err);
             } else {
-                
-                res.send(' delete data...' );
+                res.send({
+                    'message': 'services deleted Successfully...',
+                    "msg":data
+
+                });
+               
                 //  res.json(data);
                 console.log(" 'delete data.......");
             }
@@ -274,10 +299,13 @@ app.post("/services/delete",(req,res)=>{
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
-                //  res.json(data);
+                
                 console.log(" barber inserted....");
-                // document.write(data);
-                // res.redirect("/add2");
+                res.send({
+                    'message': 'barber inserted Successfully...',
+                    "msg":data
+
+                });
             }
         });
     });
@@ -319,8 +347,14 @@ app.post("/barber/update", (req, res) => {
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
-                 res.json(data);
+              
                 console.log(" services updated....");
+
+                res.send({
+                    'message': 'barber update  Successfully...',
+                    "msg":data
+
+                });
             }
         });
     });    
@@ -336,7 +370,11 @@ app.post("/barber/delete",(req,res)=>{
                 console.log(err);
             } else {
                 
-                res.send(' delete data...' );
+                res.send({
+                    'message': 'barber delete Successfully...',
+                    "msg":data
+
+                });
                 //  res.json(data);
                 console.log(" 'delete data.......");
             }
@@ -367,8 +405,13 @@ app.post("/barber/delete",(req,res)=>{
             } else {
                 // fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
-                 res.json(data);
+                
                 console.log(" order inserted...."); 
+                res.send({
+                    'message': 'order inserted Successfully...',
+                    "msg":data
+
+                });
             }
         });
     });
@@ -386,8 +429,14 @@ app.post("/barber/delete",(req,res)=>{
                 } else {
                     // fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                     // res.send({ status: true,'message': 'Account Created Successfully.' });
-                     res.json(data);
+                    
                     console.log(" status updated....");
+                    res.send({
+                        'message': 'status updated Successfully...',
+                        "msg":data
+    
+                    });
+                    
                 }
             });
         }); 
@@ -405,8 +454,13 @@ app.post("/barber/delete",(req,res)=>{
                 } else {
                     // fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                     // res.send({ status: true,'message': 'Account Created Successfully.' });
-                     res.json(data);
-                    console.log(" status updated....");
+                     
+                    console.log(" all orders....");
+                    res.send({
+                        'message': 'all orders...',
+                        "msg":data
+    
+                    });
                 }
             });
         }); 
@@ -442,10 +496,13 @@ app.post("/barber/delete",(req,res)=>{
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
-                 res.json(data);
+                
                 console.log(" image inserted....");
-                // document.write(data);
-                // res.redirect("/add2");
+                res.send({
+                    'message': 'image inserted Successfully...',
+                    "msg":data
+
+                });
             }
         });
     });    
@@ -454,7 +511,7 @@ app.post("/barber/delete",(req,res)=>{
         var image_name = req.body.image_name;
     var imageurl = req.body.imageurl;
    
-    var store_id = req.body.store_id;
+    var image_id = req.body.image_id;
      
         var matches = imageurl.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
     
@@ -473,19 +530,92 @@ app.post("/barber/delete",(req,res)=>{
         //   let fileName = 'img5' + '.' + extension;
         image = "http://localhost:7055" + "/images/" + fileName;
        
-        db.query(`UPDATE image SET image_name=?,imageurl=? where store_id=?`,
-            [ image_name,image,store_id], (err, data, fields) => {
+        db.query(`UPDATE image SET image_name=?,imageurl=? where image_id=?`,
+            [ image_name,image,image_id], (err, data, fields) => {
                 if (err) {
                     res.send(err);
                     console.log(err);
                 } else {
                     fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                     // res.send({ status: true,'message': 'Account Created Successfully.' });
-                     res.json(data);
+                     
                     console.log(" image updated....");
+                    res.send({
+                        'message': 'image update Successfully...',
+                        "msg":data
+    
+                    });
                 }
             });
         }); 
+//review
+    app.post("/review", (req, res) => {
+    var user_name = req.body.user_name;
+    var user_id = req.body.user_id;
+    var review = req.body.review;
+    var rate = req.body.rate;
+    var store_id = req.body.store_id;
+    var user_image = req.body.user_image;
+
+ 
+    var matches = user_image.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
+
+    response = {};
+
+    if (matches.length !== 3) {
+        return new Error('Invalid input string');
+    }
+    response.type = matches[1];
+    response.data = new Buffer(matches[2], 'base64');
+    let decodedImg = response;
+    let imageBuffer = decodedImg.data;
+    let type = decodedImg.type;
+    let extension = mime.getExtension(type);
+    let fileName = makeid(4) + '.' + extension;
+    //   let fileName = 'img5' + '.' + extension;
+    image = "http://localhost:7055" + "/images/" + fileName;
+   
+    db.query(`INSERT INTO review(user_name,user_id,review,rate,store_id,user_image) VALUES(?,?,?,?,?,?)`,
+        [user_name,user_id,review,rate,store_id,image], (err, data, fields) => {
+            if (err) {
+                res.send(err);
+                console.log(err);
+            } else {
+                fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
+                // res.send({ status: true,'message': 'Account Created Successfully.' });
+                //  res.json(data);
+                console.log(" review inserted....");
+                res.send({
+                    'message': 'review inserted Successfully...',
+                    "msg":data
+
+                });
+              
+            }
+        });
+    }); 
+//   delete review  
+    app.post("/review/delete",(req,res)=>{
+    var review_id = req.body.review_id;
+       
+    db.query(`DELETE FROM review WHERE review_id = ?`,
+        [review_id], (err,data, fields) => {
+            if (err) {
+                // res.send(err);
+                console.log(err);
+            } else {
+                
+                res.send({
+                    'message': 'review delete Successfully...',
+                    
+
+                });
+                //  res.json(data);
+                console.log(" 'delete data.......");
+            }
+        });
+    });
+
         
     app.get('/images/:name', (req, res) => {
         var name = req.params.name;
@@ -496,6 +626,6 @@ app.post("/barber/delete",(req,res)=>{
     // app.use('/images', express.static('images'));
     // app.get('/images', express.static(path.join(__dirname, "./images")))
     
-    app.listen(7070, () => {
-        console.log('port no is 7070');
+    app.listen(6677, () => {
+        console.log('port no is 6677');
     });
