@@ -58,8 +58,12 @@ app.post("/register", (req, res) => {
     db.query(`INSERT INTO register(name,email,password,is_owner,address,aboutus,phone,imageurl,lat_long) VALUES(?,?,?,?,?,?,?,?,?)`,
         [name, email, password, is_owner, address, aboutus, phone, image, lat_long], (err, data, fields) => {
             if (err) {
-                res.send(err);
+              
                 console.log(err);
+                res.status(400).send({
+                    'message': 'register not inserted Successfully...',
+                    
+                })
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
@@ -84,6 +88,11 @@ app.post("/register/delete",(req,res)=>{
             if (err) {
                 // res.send(err);
                 console.log(err);
+                res.status(400).send({
+                    'message': 'register is  not deleted....',
+                    
+                })
+                
             } else {
                 
                 res.send({
@@ -115,12 +124,14 @@ app.post("/register/delete",(req,res)=>{
                 });
                 console.log("welcome....")
                 // res.redirect("/welcome");
-            
-           
-                
+
             } else {
                
-                res.json({"msg":"not user..."});
+                // res.json({"msg":"not user..."});
+                res.status(400).send({
+                    'message': 'login not Successfully...',
+                    
+                })
             }
             res.end();
         });
@@ -155,8 +166,12 @@ app.post("/register/delete",(req,res)=>{
     db.query(`INSERT INTO services(services_name,working,price,imageurl,teg,storeid) VALUES(?,?,?,?,?,?)`,
         [services_name,working,price,image,teg,storeid], (err, data, fields) => {
             if (err) {
-                res.send(err);
+               
                 console.log(err);
+                res.status(400).send({
+                    'message': 'services is not inserted.....',
+                    
+                })
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
@@ -203,8 +218,12 @@ app.post("/services/update", (req, res) => {
     db.query(`UPDATE services SET services_name=?,working=?,price=?,imageurl=?,teg=?,storeid=? where salon_id=?`,
         [ services_name,working,price,image,teg,salon_id,storeid], (err, data, fields) => {
             if (err) {
-                res.send(err);
+              
                 console.log(err);
+                res.status(400).send({
+                    'message': 'services is not updated.....',
+                    
+                })
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
@@ -227,6 +246,10 @@ app.post("/services/delete",(req,res)=>{
             if (err) {
                 // res.send(err);
                 console.log(err);
+                res.status(400).send({
+                    'message': 'services is not deleted....',
+                    
+                })
             } else {
                 res.send({
                     'message': 'services deleted Successfully...',
@@ -269,8 +292,12 @@ app.post("/services/delete",(req,res)=>{
     db.query(`INSERT INTO barber(barber_name,barber_details,barber_image,storeid) VALUES(?,?,?,?)`,
         [barber_name,barber_details,image,storeid], (err, data, fields) => {
             if (err) {
-                res.send(err);
+             
                 console.log(err);
+                res.status(400).send({
+                    'message': 'barber is not inserted....',
+                    
+                })
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
@@ -315,8 +342,12 @@ app.post("/barber/update", (req, res) => {
     db.query(`UPDATE barber SET barber_name=?,barber_details=?,barber_image=?,barber_id=? where storeid=?`,
         [ barber_name,barber_details,image,barber_id,storeid], (err, data, fields) => {
             if (err) {
-                res.send(err);
+               
                 console.log(err);
+                res.status(400).send({
+                    'message': 'barber is not updated.......',
+                    
+                })
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
@@ -341,6 +372,10 @@ app.post("/barber/delete",(req,res)=>{
             if (err) {
                 // res.send(err);
                 console.log(err);
+                res.status(400).send({
+                    'message': 'barber is not deleted...',
+                    
+                })
             } else {
                 
                 res.send({
@@ -353,8 +388,6 @@ app.post("/barber/delete",(req,res)=>{
             }
         });
     });
-
-
 
 // order
    app.post("/order", (req, res) => {
@@ -371,8 +404,12 @@ app.post("/barber/delete",(req,res)=>{
     [user_name,date,slot,user_id,store_id,services_name,status],(err, data) => {
             
             if (err) {
-                res.send(err);
+              
                 console.log(err);
+                res.status(400).send({
+                    'message': 'order is not inserted....',
+                    
+                })
             } else {
                 // fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
@@ -386,6 +423,8 @@ app.post("/barber/delete",(req,res)=>{
             }
         });
     });
+
+
 // update status
     app.post("/order/status", (req, res) => {
         var status = req.body.status;
@@ -395,8 +434,12 @@ app.post("/barber/delete",(req,res)=>{
         db.query(`UPDATE orders SET status=? where store_id=?`,
             [status,store_id], (err, data, fields) => {
                 if (err) {
-                    res.send(err);
+                  
                     console.log(err);
+                    res.status(400).send({
+                        'message': 'status is not updated....',
+                        
+                    })
                 } else {
                     // fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                     // res.send({ status: true,'message': 'Account Created Successfully.' });
@@ -415,13 +458,16 @@ app.post("/barber/delete",(req,res)=>{
  app.post("/order/getorder", (req, res) => {
   
         var store_id = req.body.store_id;
-      
      
         db.query(`SELECT * FROM orders WHERE store_id = 4`,
             [store_id], (err, data, fields) => {
                 if (err) {
-                    res.send(err);
+                 
                     console.log(err);
+                    res.status(400).send({
+                        'message': 'no order..',
+                        
+                    })
                 } else {
                     // fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                     // res.send({ status: true,'message': 'Account Created Successfully.' });
@@ -434,7 +480,8 @@ app.post("/barber/delete",(req,res)=>{
                     });
                 }
             });
-        }); 
+        });  
+
 // image
      app.post("/image", (req, res) => {
     var image_name = req.body.image_name;
@@ -462,8 +509,12 @@ app.post("/barber/delete",(req,res)=>{
     db.query(`INSERT INTO image(image_name,imageurl,store_id) VALUES(?,?,?)`,
         [image_name,image,store_id], (err, data, fields) => {
             if (err) {
-                res.send(err);
+              
                 console.log(err);
+                res.status(400).send({
+                    'message': 'review is not insert',
+                    
+                })
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
@@ -477,6 +528,7 @@ app.post("/barber/delete",(req,res)=>{
             }
         });
     });    
+
 // update image
     app.post("/image/update", (req, res) => {
         var image_name = req.body.image_name;
@@ -506,6 +558,10 @@ app.post("/barber/delete",(req,res)=>{
                 if (err) {
                     res.send(err);
                     console.log(err);
+                    res.status(400).send({
+                        'message': 'image is not updated.....',
+                        
+                    })
                 } else {
                     fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                     // res.send({ status: true,'message': 'Account Created Successfully.' });
@@ -529,6 +585,11 @@ app.post("/barber/delete",(req,res)=>{
             if (err) {
                 // res.send(err);
                 console.log(err);
+                res.status(400).send({
+                    'message': 'image is not deleted.....',
+                    
+                })
+                
             } else {
                 
                 res.send({
@@ -538,7 +599,8 @@ app.post("/barber/delete",(req,res)=>{
                 console.log(" 'delete data.......");
             }
         });
-    });       
+    });   
+        
 //review
     app.post("/review", (req, res) => {
     var user_name = req.body.user_name;
@@ -569,8 +631,14 @@ app.post("/barber/delete",(req,res)=>{
     db.query(`INSERT INTO review(user_name,user_id,review,rate,store_id,user_image) VALUES(?,?,?,?,?,?)`,
         [user_name,user_id,review,rate,store_id,image], (err, data, fields) => {
             if (err) {
-                res.send(err);
+              
                 console.log(err);
+                // res.send(err);
+                res.status(400).send({
+                    'message': 'review is not insert',
+                    
+                })
+               
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
                 // res.send({ status: true,'message': 'Account Created Successfully.' });
@@ -594,6 +662,10 @@ app.post("/barber/delete",(req,res)=>{
             if (err) {
                 // res.send(err);
                 console.log(err);
+                res.status(400).send({
+                    'message': 'review is not deleted....',
+                    
+                })
             } else {
                 
                 res.send({
@@ -601,8 +673,7 @@ app.post("/barber/delete",(req,res)=>{
                     
 
                 });
-                //  res.json(data);
-                console.log(" 'delete data.......");
+               
             }
         });
     });
