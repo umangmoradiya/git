@@ -9,7 +9,7 @@ const bodyparser = require("body-parser");
 app.use(bodyparser.urlencoded({ extended: false }));
 
 const mysql = require("mysql");
-// const path = require("path");
+
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -58,7 +58,7 @@ app.post("/ragister.html", (req, res) => {
     let type = decodedImg.type;
     let extension = mime.getExtension(type);
     let fileName = makeid(4) + '.' + extension;
-    //   let fileName = 'img5' + '.' + extension;
+
     image = "http://localhost:7055" + "/images/" + fileName;
    
     db.query(`INSERT INTO register(name,email,password,is_owner,address,aboutus,phone,imageurl,lat_long) VALUES(?,?,?,?,?,?,?,?,?)`,
@@ -68,9 +68,8 @@ app.post("/ragister.html", (req, res) => {
                 console.log(err);
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
-                // res.send({ status: true,'message': 'Account Created Successfully.' });
-                //  res.json(data);
-                console.log("inserted....");
+                
+             console.log("inserted....");
                 res.redirect("/yes");
             }
         });
@@ -86,12 +85,12 @@ app.delete("/delete",(req,res)=>{
     db.query(`DELETE FROM register WHERE salon_id = ?`,
         [salon_id], (err,data, fields) => {
             if (err) {
-                // res.send(err);
+             
                 console.log(err);
             } else {
                 
                 res.send(' delete data...' );
-                //  res.json(data);
+              
                 console.log(" 'delete data.......");
             }
         });
@@ -103,7 +102,7 @@ app.get("/login.html",(req, res) => {
     res.sendFile(__dirname+"/login.html");
 });
 
-    // login
+// login
     app.post("/login.html", (req, res) => {
         var password  = req.body.password;
         var email = req.body.email;
@@ -111,13 +110,10 @@ app.get("/login.html",(req, res) => {
         db.query(`select * from register where email = ? and password = ? `, [email,password], (err, results) => {
             console.log(query)
             if (results.length > 0) {
-                //   res.send(results);
-                // res.json({"msg":"login Successfully..."});
+
                 console.log("welcome....")
                 res.redirect("/welcome");
             
-           
-                
             } else {
                
                 res.json({"msg":"not user..."});
@@ -133,7 +129,8 @@ app.get("/login.html",(req, res) => {
     app.get("/services.html",(req, res) => {
         res.sendFile(__dirname+"/services.html");
     });
-    // services
+
+// services
     app.post("/services.html", (req, res) => {
     var services_name = req.body.services_name;
     var working = req.body.working;
@@ -156,7 +153,7 @@ app.get("/login.html",(req, res) => {
     let type = decodedImg.type;
     let extension = mime.getExtension(type);
     let fileName = makeid(4) + '.' + extension;
-    //   let fileName = 'img5' + '.' + extension;
+    
     image = "http://localhost:7055" + "/images/" + fileName;
    
     db.query(`INSERT INTO services(services_name,working,price,imageurl,teg,storeid) VALUES(?,?,?,?,?,?)`,
@@ -166,8 +163,7 @@ app.get("/login.html",(req, res) => {
                 console.log(err);
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
-                // res.send({ status: true,'message': 'Account Created Successfully.' });
-                //  res.json(data);
+                                
                 console.log(" services inserted....");
                 res.redirect("/add");
             }
@@ -203,7 +199,7 @@ app.post("/services/update", (req, res) => {
     let type = decodedImg.type;
     let extension = mime.getExtension(type);
     let fileName = makeid(4) + '.' + extension;
-    //   let fileName = 'img5' + '.' + extension;
+    
     image = "http://localhost:7055" + "/images/" + fileName;
    
     db.query(`UPDATE services SET services_name=?,working=?,price=?,imageurl=?,teg=?,storeid=? where salon_id=?`,
@@ -213,8 +209,7 @@ app.post("/services/update", (req, res) => {
                 console.log(err);
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
-                // res.send({ status: true,'message': 'Account Created Successfully.' });
-                 res.json(data);
+                res.json(data);
                 console.log(" services updated....");
             }
         });
@@ -227,12 +222,12 @@ app.post("/services/delete",(req,res)=>{
     db.query(`DELETE FROM services WHERE salon_id = ?`,
         [salon_id], (err,data, fields) => {
             if (err) {
-                // res.send(err);
+                
                 console.log(err);
             } else {
                 
                 res.send(' delete data...' );
-                //  res.json(data);
+                
                 console.log(" 'delete data.......");
             }
         });
@@ -242,7 +237,7 @@ app.post("/services/delete",(req,res)=>{
     app.get("/barber.html",(req, res) => {
         res.sendFile(__dirname+"/barber.html");
     });
-    // barber
+// barber
    app.post("/barber.html", (req, res) => {
     var barber_name = req.body.barber_name;
     var barber_details = req.body.barber_details;
@@ -263,7 +258,7 @@ app.post("/services/delete",(req,res)=>{
     let type = decodedImg.type;
     let extension = mime.getExtension(type);
     let fileName = makeid(4) + '.' + extension;
-    //   let fileName = 'img5' + '.' + extension;
+
     image = "http://localhost:7055" + "/images/" + fileName;
    
     db.query(`INSERT INTO barber(barber_name,barber_details,barber_image,storeid) VALUES(?,?,?,?)`,
@@ -273,10 +268,8 @@ app.post("/services/delete",(req,res)=>{
                 console.log(err);
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
-                // res.send({ status: true,'message': 'Account Created Successfully.' });
-                //  res.json(data);
                 console.log(" barber inserted....");
-                // document.write(data);
+              
                 res.redirect("/add2");
             }
         });
@@ -308,7 +301,7 @@ app.post("/barber/update", (req, res) => {
     let type = decodedImg.type;
     let extension = mime.getExtension(type);
     let fileName = makeid(4) + '.' + extension;
-    //   let fileName = 'img5' + '.' + extension;
+    
     image = "http://localhost:7055" + "/images/" + fileName;
    
     db.query(`UPDATE barber SET barber_name=?,barber_details=?,barber_image=?,storeid=? where barber_id=?`,
@@ -318,7 +311,7 @@ app.post("/barber/update", (req, res) => {
                 console.log(err);
             } else {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
-                // res.send({ status: true,'message': 'Account Created Successfully.' });
+                
                  res.json(data);
                 console.log(" services updated....");
             }
@@ -332,24 +325,22 @@ app.post("/barber/delete",(req,res)=>{
     db.query(`DELETE FROM barber WHERE barber_id = ?`,
         [barber_id], (err,data, fields) => {
             if (err) {
-                // res.send(err);
+                
                 console.log(err);
             } else {
                 
                 res.send(' delete data...' );
-                //  res.json(data);
+                
                 console.log(" 'delete data.......");
             }
         });
     });
 
 
-    // app.get("/order.html",(req, res) => {
-    //     res.sendFile(__dirname+"/order.html");
-    // });
+
 // order
    app.post("/order", (req, res) => {
-    // var day = req.body.day;
+
     var date = req.body.date;
     var slot = req.body.slot;
     var store_id = req.body.store_id;
@@ -365,8 +356,6 @@ app.post("/barber/delete",(req,res)=>{
                 res.send(err);
                 console.log(err);
             } else {
-                // fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
-                // res.send({ status: true,'message': 'Account Created Successfully.' });
                  res.json(data);
                 console.log(" order inserted...."); 
             }
@@ -384,8 +373,8 @@ app.post("/barber/delete",(req,res)=>{
                     res.send(err);
                     console.log(err);
                 } else {
-                    // fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
-                    // res.send({ status: true,'message': 'Account Created Successfully.' });
+                  
+                    
                      res.json(data);
                     console.log(" status updated....");
                 }
@@ -403,14 +392,14 @@ app.post("/barber/delete",(req,res)=>{
                     res.send(err);
                     console.log(err);
                 } else {
-                    // fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
-                    // res.send({ status: true,'message': 'Account Created Successfully.' });
+                  
+                  
                      res.json(data);
                     console.log(" status updated....");
                 }
             });
         }); 
-        
+
         
     app.get('/images/:name', (req, res) => {
         var name = req.params.name;
