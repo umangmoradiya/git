@@ -411,6 +411,7 @@ app.post("/barber/delete",(req,res)=>{
             });
         }); 
         
+        
     app.get('/images/:name', (req, res) => {
         var name = req.params.name;
                 
@@ -420,6 +421,6 @@ app.post("/barber/delete",(req,res)=>{
     // app.use('/images', express.static('images'));
     // app.get('/images', express.static(path.join(__dirname, "./images")))
     
-    app.listen(7070, () => {
-        console.log('port no is 7070');
+    app.listen(7055, () => {
+        console.log('port no is 7055');
     });

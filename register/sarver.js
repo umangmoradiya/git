@@ -483,6 +483,7 @@ app.post("/barber/delete",(req,res)=>{
         });  
 
 // image
+
      app.post("/image", (req, res) => {
     var image_name = req.body.image_name;
     var imageurl = req.body.imageurl;
@@ -530,6 +531,7 @@ app.post("/barber/delete",(req,res)=>{
     });    
 
 // update image
+
     app.post("/image/update", (req, res) => {
         var image_name = req.body.image_name;
     var imageurl = req.body.imageurl;
@@ -577,6 +579,7 @@ app.post("/barber/delete",(req,res)=>{
         }); 
 
 // delete image 
+
    app.post("/image/delete",(req,res)=>{
     var image_id = req.body.image_id;
        
@@ -602,6 +605,7 @@ app.post("/barber/delete",(req,res)=>{
     });   
         
 //review
+
     app.post("/review", (req, res) => {
     var user_name = req.body.user_name;
     var user_id = req.body.user_id;
@@ -653,6 +657,8 @@ app.post("/barber/delete",(req,res)=>{
             }
         });
     }); 
+
+
 //   delete review  
     app.post("/review/delete",(req,res)=>{
     var review_id = req.body.review_id;
@@ -684,6 +690,7 @@ app.post("/barber/delete",(req,res)=>{
                 
         res.sendFile(__dirname + '/images/' + name)
     });
+    
     // app.use(express.static('public'));
     // app.use('/images', express.static('images'));
     // app.get('/images', express.static(path.join(__dirname, "./images")))
