@@ -1,69 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="style.css">
-         
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
+
 <body style="background-color: rgb(10, 95, 81); font-size: 150%">
- 
-
-      <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAMAAAC93eDPAAAAY1BMVEX///8AAABnZ2elpaWdnZ3Z2dlhYWHBwcH8/Pz39/fv7+8qKiokJCRKSkpQUFDf39+JiYl3d3eCgoLp6ekxMTEYGBhFRUXR0dFbW1uXl5e0tLQPDw8dHR2rq6s4ODhVVVVvb2+7Tt8ZAAAD1UlEQVR4nO2b63aqMBCFgcpVLd5RW63v/5TVmkkj2QwhBtc5XbN/tUaGj2RuCW0UiUQikUj0R7U+ri6X1XGNR4tm0lJeBgaolrHSskLji9jSLixBbtrO7fH6w0aIjyEJJo+236wvpIAAfM1fy7bx5YsRynfb+nvL18ZFSDfI/Dl9HUL+iazH8eeDU46JcMIAN51eglBYjmhq9QKEas4RxPGXzlJjIdRTniCON5SuR0LIUcZraduMiXDoB/i9zxgIJXLEE4qPVTEOQpUBk3mrXCldqjEQkCPO6p+RmT1ydcrgCOhZM1UVSjQ/TR0YYQLMrXRdKldoGEWPPwJyxIP5BcdY8UYoUUZs9UloocIhoNI8rdXgGxntz5v+CPnWtvROleDaoi7UjxVoY8IgvAFDy+I+Via33xLllnwN9UaAZqkroLnXq8J0Et4IazC5W3LE3xUCH4VCqIEjnhv0yDQxzTksAgq0HTlia4Woh692IRFQRuy+UxfbEwjQEclCCirTjHp4FEM+COUeGNBeh+33DA9EQI/5SbEHtsx3UZaqOzYaQxCO4OpMLfY9H2FRloLtzSAErjTXX90E1x5ezRQs3wMQ0OVUmtEKmdJOicu3GwLcrJCnoRVqiU4xoFOeuu5qCnWC015HNKWdEpRvbYkR2qzMuR4RSPeUYD634EjoUTAjqtK8hqcKSLSpY9MbVnFhLnFsze6iZ4XdBkOwBvH2QcbQ/DCaMAu77ziovMYbKLQbVZoLJ0c0tVDL14Dl23U4ZQPszCkjoorRoz1lShTkDSLgSnPa1wxBbSlLIaecWADQd/V6+gDcxPkRxRkJnSOyBhzFPcTXwzklLM0U20xh7FdCOQWU76lxTnlEgaMccc33gr3aqSepgEN/6ENxrjQ3Tts0TlPl/LB839NewZVmh8LYL3pWVL5vR0Lsrrmj7xgqOg9FTnktgSAY6Ti7esoRTSXKsVD+XUb2Z7RrrnvOWYdorjIy2n1H1n0uKozgaZW/1MzatXhu3YlKM7cf8VKX4bS9ISdHdDgqGCoqOI9O+dNMGmWY2t+SbdR9RRnZzMWqz9QdITli+nQ+wqKM/OuUGaVHFSoUvihfh5HOyCrhnIlAnWRQRvQuzS4iX/vJlBujeWpmxqut4LFgSrfP155y9tg6GQ3laxCiAr7nfikCJ0EQBEEQhP8UYZpklhKXEh8OIUEXujTcgiAIgiAIgiAIgiAIgiAIgiAIfxbB5U2MN4Lbv2iUYyI4/rOMw3tJXwT7Ha03Q4Yu6/8DC2eCKKoXCavsgK46ZPxVC4c/IhGJRCKR6N/SN1R6OqXFpMHXAAAAAElFTkSuQmCC" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                home    aboutus
-              </a>
-              
-        
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
 
 
-<div style=" text-align: center";>
-    
-    <br><br><br><h1>home..</h1> <br>    <br>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYkyrfrQSrpvt8Cbi_ipS_O7RRvMrYFL9PJA&usqp=CAU"  width="350" height="350"><br>
-    
-   <br> <a href="ragister.html"><button type="button" class="btn btn-secondary">ragister</button></a>
+  <nav class="navbar bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAMAAAC93eDPAAAAY1BMVEX///8AAABnZ2elpaWdnZ3Z2dlhYWHBwcH8/Pz39/fv7+8qKiokJCRKSkpQUFDf39+JiYl3d3eCgoLp6ekxMTEYGBhFRUXR0dFbW1uXl5e0tLQPDw8dHR2rq6s4ODhVVVVvb2+7Tt8ZAAAD1UlEQVR4nO2b63aqMBCFgcpVLd5RW63v/5TVmkkj2QwhBtc5XbN/tUaGj2RuCW0UiUQikUj0R7U+ri6X1XGNR4tm0lJeBgaolrHSskLji9jSLixBbtrO7fH6w0aIjyEJJo+236wvpIAAfM1fy7bx5YsRynfb+nvL18ZFSDfI/Dl9HUL+iazH8eeDU46JcMIAN51eglBYjmhq9QKEas4RxPGXzlJjIdRTniCON5SuR0LIUcZraduMiXDoB/i9zxgIJXLEE4qPVTEOQpUBk3mrXCldqjEQkCPO6p+RmT1ydcrgCOhZM1UVSjQ/TR0YYQLMrXRdKldoGEWPPwJyxIP5BcdY8UYoUUZs9UloocIhoNI8rdXgGxntz5v+CPnWtvROleDaoi7UjxVoY8IgvAFDy+I+Via33xLllnwN9UaAZqkroLnXq8J0Et4IazC5W3LE3xUCH4VCqIEjnhv0yDQxzTksAgq0HTlia4Woh692IRFQRuy+UxfbEwjQEclCCirTjHp4FEM+COUeGNBeh+33DA9EQI/5SbEHtsx3UZaqOzYaQxCO4OpMLfY9H2FRloLtzSAErjTXX90E1x5ezRQs3wMQ0OVUmtEKmdJOicu3GwLcrJCnoRVqiU4xoFOeuu5qCnWC015HNKWdEpRvbYkR2qzMuR4RSPeUYD634EjoUTAjqtK8hqcKSLSpY9MbVnFhLnFsze6iZ4XdBkOwBvH2QcbQ/DCaMAu77ziovMYbKLQbVZoLJ0c0tVDL14Dl23U4ZQPszCkjoorRoz1lShTkDSLgSnPa1wxBbSlLIaecWADQd/V6+gDcxPkRxRkJnSOyBhzFPcTXwzklLM0U20xh7FdCOQWU76lxTnlEgaMccc33gr3aqSepgEN/6ENxrjQ3Tts0TlPl/LB839NewZVmh8LYL3pWVL5vR0Lsrrmj7xgqOg9FTnktgSAY6Ti7esoRTSXKsVD+XUb2Z7RrrnvOWYdorjIy2n1H1n0uKozgaZW/1MzatXhu3YlKM7cf8VKX4bS9ISdHdDgqGCoqOI9O+dNMGmWY2t+SbdR9RRnZzMWqz9QdITli+nQ+wqKM/OuUGaVHFSoUvihfh5HOyCrhnIlAnWRQRvQuzS4iX/vJlBujeWpmxqut4LFgSrfP155y9tg6GQ3laxCiAr7nfikCJ0EQBEEQhP8UYZpklhKXEh8OIUEXujTcgiAIgiAIgiAIgiAIgiAIgiAIfxbB5U2MN4Lbv2iUYyI4/rOMw3tJXwT7Ha03Q4Yu6/8DC2eCKKoXCavsgK46ZPxVC4c/IhGJRCKR6N/SN1R6OqXFpMHXAAAAAElFTkSuQmCC"
+          alt="" width="30" height="24" class="d-inline-block align-text-top">
+        home aboutus
+      </a>
+
+
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+
+  <div style=" text-align: center" ;>
+
+    <br><br><br>
+    <h1>home..</h1> <br> <br>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYkyrfrQSrpvt8Cbi_ipS_O7RRvMrYFL9PJA&usqp=CAU"
+      width="350" height="350"><br>
+
+    <br> <a href="ragister.html"><button type="button" class="btn btn-secondary">ragister</button></a>
 
     <a href="login.html"><button type="button" class="btn btn-secondary">login</button></a>
     <!-- <button type="button" class="btn btn-secondary">Secondary</button> -->
-    <a href="services.html"><button type="button" class="btn btn-secondary">services</button></a> 
+    <a href="services.html"><button type="button" class="btn btn-secondary">services</button></a>
 
-    
-    <a href="barber.html"><button type="button" class="btn btn-secondary">barber</button></a> 
-    
+
+    <a href="barber.html"><button type="button" class="btn btn-secondary">barber</button></a>
+
     <!-- <a href="order.html"><button type="button" class="btn btn-secondary">order</button></a> -->
 
 
-</div>
-<br><br><br><br>
+  </div>
+  <br><br><br><br>
 
-<div class="card bg-dark text-white">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8U9hy_89uCsT3hinu3ivLUDOz9ggg5BUk7g&usqp=CAU" class="card-img" alt="..." height="  300">
-    
+  <div class="card bg-dark text-white">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8U9hy_89uCsT3hinu3ivLUDOz9ggg5BUk7g&usqp=CAU"
+      class="card-img" alt="..." height="  300">
+
     <div class="card-img-overlay ">
       <h5 class="card-title">Card title</h5>
       <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
       <!-- <p class="card-text">Last updated 3 mins ago</p> -->
     </div>
   </div>
-  
+
 </body>
+
 </html>
