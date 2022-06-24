@@ -1,2 +1,2 @@
 cd .\register\  
-web:  sarver.js
+web: npm sarver.js
