@@ -1,1 +1,1 @@
-web: npm node .\sarver.js
+web: npm .\sarver.js
