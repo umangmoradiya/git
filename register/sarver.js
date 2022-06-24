@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const makeid = require("./filename");
 
+
 const fs = require("fs");
 const mime = require("mime");
 
@@ -456,7 +457,7 @@ app.post("/order/getorder", (req, res) => {
 
     var store_id = req.body.store_id;
 
-    db.query(`SELECT * FROM orders WHERE store_id = 4`,
+    db.query(`SELECT * FROM orders WHERE store_id = ?`,
         [store_id], (err, data, fields) => {
             if (err) {
 
@@ -500,16 +501,16 @@ app.post("/image", (req, res) => {
     let type = decodedImg.type;
     let extension = mime.getExtension(type);
     let fileName = makeid(4) + '.' + extension;
-    //   let fileName = 'img5' + '.' + extension;
+
     image = "http://localhost:7055" + "/images/" + fileName;
 
     db.query(`INSERT INTO image(image_name,imageurl,store_id) VALUES(?,?,?)`,
-        [image_name, image, store_id], (err, data, fields) => {
+        [image_name,imageurl,store_id], (err, data, fields) => {
             if (err) {
 
                 console.log(err);
                 res.status(400).send({
-                    'message': 'review is not insert',
+                    'message': 'image is not insert',
 
                 })
             } else {
