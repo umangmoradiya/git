@@ -1,2 +1,2 @@
 
-web: node .\register\sarver.js
+web: node ./register/sarver.js
