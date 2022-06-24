@@ -505,7 +505,7 @@ app.post("/image", (req, res) => {
     image = "http://localhost:7055" + "/images/" + fileName;
 
     db.query(`INSERT INTO image(image_name,imageurl,store_id) VALUES(?,?,?)`,
-        [image_name,imageurl,store_id], (err, data, fields) => {
+        [image_name, imageurl, store_id], (err, data, fields) => {
             if (err) {
 
                 console.log(err);
