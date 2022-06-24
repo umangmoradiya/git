@@ -66,7 +66,7 @@ app.post("/register", (req, res) => {
 
                 })
             } else {
-                fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
+                fs.writeFileSync('./register/images/' + fileName, imageBuffer, 'utf8');
 
                 res.send({
                     'message': 'register inserted Successfully...',
