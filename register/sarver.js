@@ -66,7 +66,7 @@ app.post("/register", (req, res) => {
 
                 })
             } else {
-                fs.writeFileSync('./register/images/' + fileName, imageBuffer, 'utf8');
+                fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
 
                 res.send({
                     'message': 'register inserted Successfully...',
@@ -97,7 +97,7 @@ app.post("/register/delete", (req, res) => {
             } else {
 
                 res.send({
-                    'message': 'register deleted Successfully...',
+                    'message': `store_id  ${store_id} deleted Successfully...`,
 
 
                 });
@@ -145,7 +145,7 @@ app.post("/services", (req, res) => {
     var imageurl = req.body.imageurl;
     var price = req.body.price;
     var teg = req.body.teg;
-    var storeid = req.body.storeid;
+    var store_id = req.body.store_id;
 
     var matches = imageurl.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
 
@@ -164,8 +164,8 @@ app.post("/services", (req, res) => {
 
     image = "http://localhost:7055" + "/images/" + fileName;
 
-    db.query(`INSERT INTO services(services_name,working,price,imageurl,teg,storeid) VALUES(?,?,?,?,?,?)`,
-        [services_name, working, price, image, teg, storeid], (err, data, fields) => {
+    db.query(`INSERT INTO services(services_name,working,price,imageurl,teg,store_id) VALUES(?,?,?,?,?,?)`,
+        [services_name, working, price, image, teg, store_id], (err, data, fields) => {
             if (err) {
 
                 console.log(err);
@@ -196,8 +196,8 @@ app.post("/services/update", (req, res) => {
     var imageurl = req.body.imageurl;
     var price = req.body.price;
     var teg = req.body.teg;
-    var storeid = req.body.storeid;
-    var salon_id = req.body.salon_id;
+    var services_id = req.body.services_id;
+    var store_id = req.body.store_id;
 
     var matches = imageurl.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
 
@@ -216,8 +216,8 @@ app.post("/services/update", (req, res) => {
 
     image = "http://localhost:7055" + "/images/" + fileName;
 
-    db.query(`UPDATE services SET services_name=?,working=?,price=?,imageurl=?,teg=?,storeid=? where salon_id=?`,
-        [services_name, working, price, image, teg, salon_id, storeid], (err, data, fields) => {
+    db.query(`UPDATE services SET services_name=?,working=?,price=?,imageurl=?,teg=?,store_id=?where services_id=?`,
+        [services_name, working, price, image, teg,  store_id,services_id], (err, data, fields) => {
             if (err) {
 
                 console.log(err);
@@ -229,7 +229,7 @@ app.post("/services/update", (req, res) => {
                 fs.writeFileSync('./images/' + fileName, imageBuffer, 'utf8');
 
                 res.send({
-                    'message': 'services updated Successfully...',
+                    'message': `store_id  ${store_id}  updated Successfully...`,
                     "msg": data
 
                 });
@@ -271,7 +271,7 @@ app.post("/barber", (req, res) => {
     var barber_name = req.body.barber_name;
     var barber_details = req.body.barber_details;
     var barber_image = req.body.barber_image;
-    var storeid = req.body.storeid;
+    var store_id = req.body.store_id;
 
     var matches = barber_image.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
 
@@ -290,8 +290,8 @@ app.post("/barber", (req, res) => {
 
     image = "http://localhost:7055" + "/images/" + fileName;
 
-    db.query(`INSERT INTO barber(barber_name,barber_details,barber_image,storeid) VALUES(?,?,?,?)`,
-        [barber_name, barber_details, image, storeid], (err, data, fields) => {
+    db.query(`INSERT INTO barber(barber_name,barber_details,barber_image,store_id) VALUES(?,?,?,?)`,
+        [barber_name, barber_details, image, store_id], (err, data, fields) => {
             if (err) {
 
                 console.log(err);
@@ -320,7 +320,7 @@ app.post("/barber/update", (req, res) => {
     var barber_name = req.body.barber_name;
     var barber_details = req.body.barber_details;
     var barber_image = req.body.barber_image;
-    var storeid = req.body.storeid;
+    var store_id = req.body.store_id;
     var barber_id = req.body.barber_id;
 
     var matches = barber_image.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
@@ -340,8 +340,8 @@ app.post("/barber/update", (req, res) => {
 
     image = "http://localhost:7055" + "/images/" + fileName;
 
-    db.query(`UPDATE barber SET barber_name=?,barber_details=?,barber_image=?,barber_id=? where storeid=?`,
-        [barber_name, barber_details, image, barber_id, storeid], (err, data, fields) => {
+    db.query(`UPDATE barber SET barber_name=?,barber_details=?,barber_image=?,store_id =? where barber_id=?`,
+        [barber_name, barber_details, image, store_id,barber_id], (err, data, fields) => {
             if (err) {
 
                 console.log(err);
@@ -510,7 +510,7 @@ app.post("/image", (req, res) => {
     image = "http://localhost:7055" + "/images/" + fileName;
 
     db.query(`INSERT INTO image(image_name,imageurl,store_id) VALUES(?,?,?)`,
-        [image_name, imageurl, store_id], (err, data, fields) => {
+        [image_name, image, store_id], (err, data, fields) => {
             if (err) {
 
                 console.log(err);
