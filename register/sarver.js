@@ -390,6 +390,7 @@ app.post("/barber/delete", (req, res) => {
         });
 });
 
+
 // order
 app.post("/order", (req, res) => {
 
@@ -452,6 +453,8 @@ app.post("/order/status", (req, res) => {
             }
         });
 });
+
+
 // get order
 app.post("/order/getorder", (req, res) => {
 
@@ -478,6 +481,8 @@ app.post("/order/getorder", (req, res) => {
             }
         });
 });
+
+
 
 // image
 
@@ -526,6 +531,7 @@ app.post("/image", (req, res) => {
             }
         });
 });
+
 
 // update image
 
