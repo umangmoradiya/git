@@ -561,7 +561,6 @@ app.post("/image/update", (req, res) => {
     db.query(`UPDATE image SET image_name=?,imageurl=? where image_id=?`,
         [image_name, image, image_id], (err, data, fields) => {
             if (err) {
-                
                 res.send(err);
                 console.log(err);
                 res.status(400).send({
