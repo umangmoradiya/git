@@ -22,7 +22,7 @@ db.connect((err) => {
 
 
 
-app.get("/get", (req, res) => {
+app.get("/name", (req, res) => {
     var name = req.body.name
     res.json(name);
 

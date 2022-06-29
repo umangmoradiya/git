@@ -461,7 +461,7 @@ app.post("/order/getorder", (req, res) => {
     var store_id = req.body.store_id;
 
     db.query(`SELECT * FROM orders WHERE store_id = ?`,
-        [store_id], (err, data, fields) => {
+        [store_id], (err, data) => {
             if (err) {
 
                 console.log(err);
