@@ -1,7 +1,11 @@
-body{
+/* body{
     background-color: aqua;
-}
-img{
-    padding-left: 300px;
-   
+} */
+*{
+ 
+ background-image: url("../image/img5.jpeg");
+ background-repeat: no-repeat;
+ background-color: aqua;
+ background-position: top center;
+
 }

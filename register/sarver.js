@@ -51,7 +51,7 @@ app.post("/register", (req, res) => {
     let decodedImg = response;
     let imageBuffer = decodedImg.data;
     let type = decodedImg.type;
-    let extension = mime.getExtension(type);
+    let extension = mime.extension(type);
     let fileName = makeid(4) + '.' + extension;
 
     image = "http://localhost:7055" + "/images/" + fileName;
@@ -77,6 +77,18 @@ app.post("/register", (req, res) => {
 
             }
         });
+});
+
+app.get("/register/getdata",(req,res)=>{
+    db.query(`select * from register`,(err,data)=>{
+        if(err){
+            res.json({"msg" :"no data"});
+        }
+        else{
+            res.send(data);
+        }
+    });
+    
 });
 
 
@@ -159,7 +171,7 @@ app.post("/services", (req, res) => {
     let decodedImg = response;
     let imageBuffer = decodedImg.data;
     let type = decodedImg.type;
-    let extension = mime.getExtension(type);
+    let extension = mime.extension(type);
     let fileName = makeid(4) + '.' + extension;
 
     image = "http://localhost:7055" + "/images/" + fileName;
@@ -211,7 +223,8 @@ app.post("/services/update", (req, res) => {
     let decodedImg = response;
     let imageBuffer = decodedImg.data;
     let type = decodedImg.type;
-    let extension = mime.getExtension(type);
+
+    var extension = mime.extension(type);
     let fileName = makeid(4) + '.' + extension;
 
     image = "http://localhost:7055" + "/images/" + fileName;
@@ -264,6 +277,19 @@ app.post("/services/delete", (req, res) => {
         });
 });
 
+app.get("/services/getdata",(req,res)=>{
+    db.query(`select * from services`,(err,data)=>{
+        if(err){
+            res.json({"msg" :"no data"});
+        }
+        else{
+            res.send(data);
+        }
+    });
+    
+});
+
+
 
 
 // barber
@@ -285,7 +311,7 @@ app.post("/barber", (req, res) => {
     let decodedImg = response;
     let imageBuffer = decodedImg.data;
     let type = decodedImg.type;
-    let extension = mime.getExtension(type);
+    let extension = mime.extension(type);
     let fileName = makeid(4) + '.' + extension;
 
     image = "http://localhost:7055" + "/images/" + fileName;
@@ -335,7 +361,7 @@ app.post("/barber/update", (req, res) => {
     let decodedImg = response;
     let imageBuffer = decodedImg.data;
     let type = decodedImg.type;
-    let extension = mime.getExtension(type);
+    let extension = mime.extension(type);
     let fileName = makeid(4) + '.' + extension;
 
     image = "http://localhost:7055" + "/images/" + fileName;
@@ -388,6 +414,19 @@ app.post("/barber/delete", (req, res) => {
                 console.log(" 'delete data.......");
             }
         });
+});
+
+
+app.get("/barber/getdata",(req,res)=>{
+    db.query(`select * from barber`,(err,data)=>{
+        if(err){
+            res.json({"msg" :"no data"});
+        }
+        else{
+            res.send(data);
+        }
+    });
+    
 });
 
 
@@ -482,6 +521,18 @@ app.post("/order/getorder", (req, res) => {
         });
 });
 
+app.get("/order/getdata",(req,res)=>{
+    db.query(`select * from orders`,(err,data)=>{
+        if(err){
+            res.json({"msg" :"no data"});
+        }
+        else{
+            res.send(data);
+        }
+    });
+    
+});
+
 
 
 // image
@@ -504,7 +555,7 @@ app.post("/image", (req, res) => {
     let decodedImg = response;
     let imageBuffer = decodedImg.data;
     let type = decodedImg.type;
-    let extension = mime.getExtension(type);
+    let extension = mime.extension(type);
     let fileName = makeid(4) + '.' + extension;
 
     image = "http://localhost:7055" + "/images/" + fileName;
@@ -553,7 +604,7 @@ app.post("/image/update", (req, res) => {
     let decodedImg = response;
     let imageBuffer = decodedImg.data;
     let type = decodedImg.type;
-    let extension = mime.getExtension(type);
+    let extension = mime.extension(type);
     let fileName = makeid(4) + '.' + extension;
 
     image = "http://localhost:7055" + "/images/" + fileName;
@@ -607,6 +658,19 @@ app.post("/image/delete", (req, res) => {
         });
 });
 
+
+app.get("/image/getdata",(req,res)=>{
+    db.query(`select * from image`,(err,data)=>{
+        if(err){
+            res.json({"msg" :"no data"});
+        }
+        else{
+            res.send(data);
+        }
+    });
+    
+});
+
 //review
 
 app.post("/review", (req, res) => {
@@ -630,7 +694,7 @@ app.post("/review", (req, res) => {
     let decodedImg = response;
     let imageBuffer = decodedImg.data;
     let type = decodedImg.type;
-    let extension = mime.getExtension(type);
+    let extension = mime.extension(type);
     let fileName = makeid(4) + '.' + extension;
 
     image = "http://localhost:7055" + "/images/" + fileName;
@@ -685,6 +749,19 @@ app.post("/review/delete", (req, res) => {
             }
         });
 });
+
+app.get("/review/getdata",(req,res)=>{
+    db.query(`select * from review`,(err,data)=>{
+        if(err){
+            res.json({"msg" :"no data"});
+        }
+        else{
+            res.send(data);
+        }
+    });
+    
+});
+
 
 
 app.get('/images/:name', (req, res) => {
