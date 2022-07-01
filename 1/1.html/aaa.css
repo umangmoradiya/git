@@ -1,11 +1,22 @@
-/* body{
-    background-color: aqua;
-} */
-*{
- 
- background-image: url("../image/img5.jpeg");
- background-repeat: no-repeat;
- background-color: aqua;
- background-position: top center;
 
+*{
+ margin: 0;
+ padding: 0;
+}
+.cont{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.box{
+    background-color: aqua;
+    height: 10vh;
+    width: 30vw;
+    
+}
+.box2{
+    background-color: greenyellow;
+    height: 10vh;
+    width: 30vw;
+  
 }
