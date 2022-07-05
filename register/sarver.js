@@ -724,7 +724,6 @@ app.post("/review", (req, res) => {
         });
 });
 
-
 //   delete review  
 app.post("/review/delete", (req, res) => {
     var review_id = req.body.review_id;
