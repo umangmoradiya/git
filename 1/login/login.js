@@ -2,6 +2,8 @@
 const express = require("express");
 const app = express();
 
+const cors = require("cors");
+
 const bodyparser = require("body-parser");
 app.use(bodyparser.urlencoded({ extended: false }));
 
@@ -22,12 +24,22 @@ db.connect((err) => {
     console.log("database connected successfully....");
 });
 
+var corsOptions = {
+    origin: "*",
+    optionsSuccessStatus: 200 // For legacy browser support
+}
+app.use(cors(corsOptions));
 
 
-app.get("/login",(req, res) => {
+
+app.post("/login",(req, res) => {
    
-    var email = req.body.email;
-    var password =req.body.password;
+    var {email,password} = req.body;
+    // var email = req.body.email;
+    // var password = req.body.password;
+    
+    console.log(email);
+    console.log(req.body);
     if(email === "admin@gmail.com" && password === "123456")
     {
         res.json("login success...")
@@ -42,8 +54,8 @@ app.get("/login",(req, res) => {
 app.post("/contact",(req,res)=>{
         var name = req.body.name;
         var email = req.body.email;
-        var address = req.body.Address;
-        let contactno = req.body.contactno;
+        var contactno = req.body.contactno;
+        var address = req.body.address;
         var skill = req.body.skill;
         var description = req.body.description;
         var clients = req.body.clients;
@@ -53,7 +65,7 @@ app.post("/contact",(req,res)=>{
 
 
 
-        db.query(`INSERT INTO contact(name,email,address,contactno,skill,dic,clients,project,review,reword)VALUES(?,?,?,?)`,[name,email,address,contactno,skill,description,clients,project,review,reword],(err,data)=>{
+        db.query(`INSERT INTO contact(name,email,contactno,address,skill,description,clients,project,review,reword)VALUES(?,?,?,?,?,?,?,?,?,?)`,[name,email,contactno,address,skill,description,clients,project,review,reword],(err,data)=>{
             if(err){
                 res.status(400).send({
                     'message': 'contact not inserted Successfully...',
@@ -66,12 +78,16 @@ app.post("/contact",(req,res)=>{
                     "msg": data
             })
             }
-        })
+        });
 
 });
 
 
 
-app.listen(5450, () => {
-    console.log("server listening the port no. 5450");
+
+
+
+app.listen(5455, () => {
+    console.log("server listening the port no. 5455");
 });
+// app.listen(5455);
