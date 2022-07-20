@@ -34,9 +34,9 @@ app.use(cors(corsOptions));
 
 app.post("/login",(req, res) => {
    
-    var {email,password} = req.body;
-    // var email = req.body.email;
-    // var password = req.body.password;
+    // var {email,password} = req.body;
+    var email = req.body.email;
+    var password = req.body.password;
     
     console.log(email);
     console.log(req.body);
