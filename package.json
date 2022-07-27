@@ -18,6 +18,7 @@
     "express-session": "^1.17.3",
     "fs": "^0.0.1-security",
     "jimp": "^0.16.0",
+    "jsonwebtoken": "^8.5.1",
     "mime": "^3.0.0",
     "mongoose": "^6.3.3",
     "my-sql": "^1.2.15",
